@@ -19,7 +19,7 @@ class users extends Seeder
             'name'=> 'Admin',
             'email'=> 'admin@admin.com',
             'password'=> Hash::make('password'),
-            'rol'=> 'admin'
+            'id_rol'=> '1'
         ]);
     }
 }
