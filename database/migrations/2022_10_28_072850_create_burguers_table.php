@@ -18,6 +18,8 @@ class CreateBurguersTable extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->float('precio', 8, 2);
+            $table->foreignId('imagen')->unsigned();
+            $table->foreign('imagen')->references('id')->on('images');
         });
     }
 

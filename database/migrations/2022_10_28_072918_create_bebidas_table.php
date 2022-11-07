@@ -18,6 +18,8 @@ class CreateBebidasTable extends Migration
             $table->string('nombre');
             $table->float('precio', 8, 2);
             $table->timestamps();
+            $table->foreignId('imagen')->unsigned();
+            $table->foreign('imagen')->references('id')->on('images');
         });
     }
 
