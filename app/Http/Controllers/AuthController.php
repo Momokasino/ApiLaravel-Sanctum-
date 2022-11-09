@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -37,16 +38,20 @@ class AuthController extends Controller
             ], 401);
         }
         $user = User::where('email', $request['email'])->firstOrFail();
+        $email = $request['email'];
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'access_token' => $token,
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer',
+            'email' => $email
         ]);
     }
 
-    public function infouser(Request $request){
-        return $request->user();
+    public function getUserInfo(Request $request){
+        $users = DB::table('users')->get();
+ 
+        return view('user.index', ['users' => $users]);
     }
 }
