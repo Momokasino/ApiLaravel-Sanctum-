@@ -49,9 +49,9 @@ class AuthController extends Controller
         ]);
     }
 
-    public function getUserInfo(Request $request){
-        $users = DB::table('users')->get();
- 
-        return view('user.index', ['users' => $users]);
+    public function getRoleUser(Request $request, $email){
+        $user = User::where('email', $email)->firstOrFail();
+        $role = $user->id_rol;
+        return $role;
     }
 }

@@ -24,4 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post( '/register', [AuthController::class, 'register']);
 Route::post( '/login', [AuthController::class, 'login']);
 Route::post('/image',[ImageController::class, 'imageStore']);
-Route::post( '/userinfo', [AuthController::class, 'infouser'])->middleware('auth:sanctum');
+Route::get('/getRoleUser/{email}', [AuthController::class, 'getRoleUser']);
+// Route::get('getRoleUser/{email}', 'AuthController@getRoleUser');
