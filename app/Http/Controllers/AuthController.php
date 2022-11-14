@@ -49,7 +49,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function getRoleUser(Request $request, $email){
+    public function getUserInfo(Request $request, $email){
         $user = User::where('email', $email)->firstOrFail();
         $role = $user->id_rol;
         return $role;
